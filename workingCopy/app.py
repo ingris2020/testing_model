@@ -39,7 +39,7 @@ def index():
 
 @app.route("/json")
 def renderAllRecipes():
-    filename = os.path.join('static', 'data', 'AllRecipes.json')
+    filename = os.path.join('static', 'data', 'HealthyAll2.json')
     with open(filename) as recipe_file:
         data = json.load(recipe_file)
         print(data)
