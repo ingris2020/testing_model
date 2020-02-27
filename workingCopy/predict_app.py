@@ -26,7 +26,7 @@ dataset = pd.read_csv('../data/ModelData_1.csv')
 app = Flask(__name__)
 
 def get_model():
-    json_file = open('modelD1.json', 'r')
+    json_file = open('modelD1.h5', 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     loaded_model = model_from_json(loaded_model_json)

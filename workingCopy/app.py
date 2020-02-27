@@ -2,7 +2,26 @@ from flask import Flask, render_template, redirect, url_for, jsonify
 from flask_pymongo import PyMongo
 import json
 import os
-#import predict_app
+#Model Dependencies
+import warnings
+warnings.simplefilter('ignore')
+import base64
+import numpy as numpy
+import io
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+import tensorflow as tf
+import keras
+from keras.models import Sequential
+from keras.utils import to_categorical
+from keras.layers import Dense
+from sklearn.preprocessing import LabelEncoder
+from keras.callbacks import EarlyStopping
+from keras import backend as K
+from keras.models import model_from_json
+from keras.models import load_model
+
 
 app = Flask(__name__)
 
@@ -11,15 +30,16 @@ app = Flask(__name__)
 #mongo = PyMongo(app)
 
 
+def get_model():
+    global model
+    model = load_model("modelD1.h5")
+    print("*Model Loaded")
+
+  
 @app.route("/")
 def index():
     #recipe = mongo.db.recipe.find_one()
     return render_template("index.html")
-
-@app.route("/get_model")
-def model():
-   
-    return redirect("/", code=302)
 
 
 @app.route("/json")
@@ -34,7 +54,7 @@ def analyze_nutrients(total_nutrients):
     Servings = 1
     Calories = total_nutrients['ENERC_KCAL']['quantity']
     Fat  = total_nutrients['FAT']['quantity']
-    Sat_Fat = total_nutrients['FATSAT']['quantity']
+    Sat_Fat = total_nutrients['FASAT']['quantity']
     Trans_Fat = total_nutrients['FATRN']['quantity']
     Mono_Fat = total_nutrients['FAMS']['quantity']
     Poly_Fat = total_nutrients['FAPU']['quantity']
