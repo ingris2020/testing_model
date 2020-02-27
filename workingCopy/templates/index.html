@@ -12,21 +12,16 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
  
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
- 
-  {%block head%}{%endblock%}
+
 </head>
 
 <body>
-
-    {%block body%}{%endblock%}
 
   <div class="hero-image">
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="# ">Home
-         
-        </a>
+        <a class="navbar-brand" href="# ">Home </a>
    
   </nav>
   <div class="container col-12 col-md-6 col-sm-4" > <!-- main container starts -->
@@ -42,11 +37,10 @@
     </form>
     <br><br>
     <div class="row">
-      <div class="col-md-12 col-sm-6">
-        <div class="well">
-        <p id="predictor">Here will display the prediction</p>>
-      </div>
-    </div>
+      <div class="col-10 col-med-8 col-sm-4">
+      
+        <p id="predictor">After analyzing all nutritional details, the Neural Network model has determined that recipe: <br>{{url}}  is  {{data}}  </p>
+       
     </div><br><br><br>
   </div>
 
