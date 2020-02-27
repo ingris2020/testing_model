@@ -1,0 +1,57 @@
+body {
+    text-align: inherit;
+    padding-bottom: 0px;
+
+  }
+  /* Sticky Footer rules (https://getbootstrap.com/examples/sticky-footer/) */
+  html {
+    position: relative;
+    min-height: 80%;
+  }
+  
+  form {
+      padding-top: 200px;
+      padding-left: 350px;
+      width: 1000px;
+      font: x-large;
+  }
+
+  .container {
+      padding-left: 10px;
+      padding-right: 10px;
+
+  }
+
+  .row {
+    padding-top: 50px;
+    padding-left: 250px;
+    justify-content: center;
+  }
+
+  .input-group-btn{
+      padding-left: 100;
+      
+  }
+
+  .hero-image {
+    background-image: url("../images/wallpaper.jpg");
+    background-color: #cccccc;
+    height: 900px;
+    width: 1500;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+ .navbar-brand img {
+    width: 10%;
+    padding: 0px;
+  }
+
+  .navbar-header {
+      padding-top: -10px;
+  }
+
+ 
+ 
+  
