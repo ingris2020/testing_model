@@ -36,7 +36,12 @@ print("Loaded modelD1 from disk")
 get_model()
 
 def preprocess_recipe():
-    X_test, y_test = train_test_split(X, y, random_state=1, stratify=y)
+    X_scaler = MinMaxScaler().fit(X_train)
+    X_test_scaled = X_scaler.transform(X_test)
+    # Assign X (data) and y (target) - And review 
+    X = dataset.drop(["HealthyLabel", "Healthy"], axis=1)
+    y = dataset["HealthyLabel"]
+    X_test, y_test = (X, y, random_state=1, stratify=y)
     X_test_scaled = X_scaler.transform(X_test)
 
     label_encoder = LabelEncoder()

@@ -9,6 +9,7 @@ import base64
 import numpy as numpy
 import io
 import pandas as pd
+from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 import tensorflow as tf
@@ -35,7 +36,7 @@ def get_model():
     model = load_model("modelD1.h5")
     print("*Model Loaded")
 
-  
+
 @app.route("/")
 def index():
     #recipe = mongo.db.recipe.find_one()
@@ -45,8 +46,8 @@ def index():
 @app.route("/json")
 def renderAllRecipes():
     filename = os.path.join('static', 'data', 'AllRecipes.json')
-    with open(filename) as blog_file:
-        data = json.load(blog_file)
+    with open(filename) as recipe_file:
+        data = json.load(recipe_file)
         print(data)
         return jsonify(data)
 
@@ -87,6 +88,16 @@ def analyze_nutrients(total_nutrients):
 
     # X = [calories, sodium]
     X = [Servings, Fat, Sat_Fat, Trans_Fat, Mono_Fat, Poly_Fat, Carbs, Fiber, Sugar, Protein, Cholesterol, Sodium, Calcium, Magnesium,	Potassium, Iron, Zinc, Phosphorus, Vit_A, Vit_C, B1, B2, B3, B6, Folate_eq, Folate_food, B12, Vit_D, Vit_E, Vit_K, Water]
+    print(X.reshape(1, -1))
+       # Import the standardizer
+    scaler = preprocessing.StandardScaler()
+
+    # Standardize the data
+    standardized_data=scaler.fit_transform(X)
+    
+
+    # print the results
+    print(standardized_data)
 
     # Run your model
     healthy = True
