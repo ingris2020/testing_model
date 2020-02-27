@@ -87,7 +87,7 @@ def analyze_nutrients(total_nutrients):
     
 
     # X = [calories, sodium]
-    X = [Servings, Fat, Sat_Fat, Trans_Fat, Mono_Fat, Poly_Fat, Carbs, Fiber, Sugar, Protein, Cholesterol, Sodium, Calcium, Magnesium,	Potassium, Iron, Zinc, Phosphorus, Vit_A, Vit_C, B1, B2, B3, B6, Folate_eq, Folate_food, B12, Vit_D, Vit_E, Vit_K, Water]
+    X = [Servings, Calories, Fat, Sat_Fat, Trans_Fat, Mono_Fat, Poly_Fat, Carbs, Fiber, Sugar, Protein, Cholesterol, Sodium, Calcium, Magnesium,	Potassium, Iron, Zinc, Phosphorus, Vit_A, Vit_C, B1, B2, B3, B6, Folate_eq, Folate_food, B12, Vit_D, Vit_E, Vit_K, Water]
     print(X.reshape(1, -1))
        # Import the standardizer
     scaler = preprocessing.StandardScaler()
