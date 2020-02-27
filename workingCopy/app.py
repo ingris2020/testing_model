@@ -39,7 +39,7 @@ def index():
 
 @app.route("/json")
 def renderAllRecipes():
-    filename = os.path.join('static', 'data', 'HealthyAll2.json')
+    filename = os.path.join('static', 'data', 'AllRecipes.json')
     with open(filename) as recipe_file:
         data = json.load(recipe_file)
         print(data)
@@ -113,10 +113,12 @@ def analyze_nutrients(total_nutrients):
 
 @app.route("/recipe/<recipe_name>")
 def recipe(recipe_name):
+    print(f"Received request for {recipe_name} ...")
+
     filename = os.path.join('static', 'data', 'AllRecipes.json')
     with open(filename) as blog_file:
-        foods = json.load(blog_file)
-        
+        foods = json.load(blog_file)       
+
         for food in foods:
             if food['recipe']['label'] == recipe_name:
                 total_nutrients = food['recipe']['totalNutrients']
